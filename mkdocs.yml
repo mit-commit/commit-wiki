@@ -1,5 +1,5 @@
 site_name: Commit Wiki
-site_url: https://github.io/willowahrens/commit-wiki
+site_url: https://mit-commit.github.io/commit-wiki/
 nav:
   - Home: index.md
   - Papers: papers.md
