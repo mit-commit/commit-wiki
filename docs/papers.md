@@ -1,12 +1,16 @@
 # How to Add a Paper to the Commit Website?
 
-We use Git to manage updates to the whole commit website. The website files are in `/afs/csail.mit.edu/group/commit/www/data`
+We use Git to manage updates to the whole commit website.
 
-To modify any file in the commit website, you need to have the right permissions. The entire commit group has read-write access on the website. If a user is in the commit Kerberos group, they should be able to edit the previous folder. If you don't have access, please send an email to `commit-sysadmin@lists.csail.mit.edu`
+**DO NOT EDIT FILES IN `/afs/csail.mit.edu/group/commit/www/data`** (we used to use a different system for this, but we are now using Git).
 
 To add a paper:
 
-- Add the PDF file of your paper to `/afs/csail.mit.edu/group/commit/www/data/papers/`. Make sure you add it in the right year (for example, papers of 2020 should be in the folder `/afs/csail.mit.edu/group/commit/www/data/papers/2020/`). If the folder does not exist, feel free to create it.
+- `git clone` the commit website at [`https://github.com/mit-commit/commit-website`](https://github.com/mit-commit/commit-website).
+
+- Create a new branch for your changes.
+
+- Add the PDF file of your paper to `/data/papers/`. Make sure you add it in the right year (for example, papers of 2020 should be in the folder `/data/papers/2020/`). If the folder does not exist, feel free to create it.
 
 - Add a BibTeX entry for the paper in `papers.bib`. Make sure you add a link to your paper, for example using URL. For example:
 
@@ -14,9 +18,12 @@ To add a paper:
 
 - Run `add_paper.sh`.
 
-- Please commit your changes to git.
+- Follow the instructions in the Readme to verify that the website looks good.
 
-- You are done. Open [http://groups.csail.mit.edu/commit/?page=publications](http://groups.csail.mit.edu/commit/?page=publications) and make sure your paper entry, the BibTeX, and the PDF link are all good.
+- Commit your changes to git, push them to the repository, and create a pull request.
+
+- You are done. After merging your PR, an admin will update the server based on the `master` branch of the git repo.
 
 - Please keep in mind that the script used to extract information from the file `papers.bib` expects the BibTeX to be in a certain format. For example, the BibTeX entries have to be between `" "`. This is why it might be a good idea to copy another similar entry and modify it.
 
+- Consider sending an email to the commit mailing list to let everyone know about the new paper.
