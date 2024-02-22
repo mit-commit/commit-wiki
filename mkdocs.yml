@@ -1,6 +1,7 @@
 site_name: Commit Wiki
 site_url: https://mit-commit.github.io/commit-wiki/
 repo_url: https://github.com/mit-commit/commit-wiki
+edit_uri: blob/main/docs/
 nav:
   - Home: index.md
   - Papers: papers.md
