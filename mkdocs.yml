@@ -1,1 +1,7 @@
-site_name: My Docs
+site_name: Commit Wiki
+site_url: https://github.io/willowahrens/commit-wiki
+nav:
+  - Home: index.md
+  - Papers: papers.md
+  - Admin: admin.md
+  - Lanka: lanka.md
