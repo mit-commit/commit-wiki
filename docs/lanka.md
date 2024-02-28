@@ -59,3 +59,36 @@ As the frontend node is not the same architecture as the compute nodes, make sur
 ### Turbo Boost
 
 Turbo Boost has been disabled on all nodes to reduce timing inconsistencies and performance variability. This setting should remain off by default. Check with `cat /sys/devices/system/cpu/intel_pstate/no_turbo` (should return 1). You can fail if turbo boost is enabled with `[ "$(cat /sys/devices/system/cpu/intel_pstate/no_turbo)" = "1" ] || (echo "TurboBoost is on and could disrupt benchmarks. Failing..." && exit 1)`.
+
+## File Permissions and .bashrc
+
+Since the compute nodes do not have direct access to AFS, where your `.bashrc` file is typically located, a common issue arises in maintaining environment settings across jobs. A practical solution is to utilize a soft link to your `.bashrc` within a directory inside AFS, configured with specific permissions to allow system-wide readability without the need for Kerberos tokens.
+
+### Steps to Setup the Soft Link for `.bashrc`
+
+1. **Create a Publicly Readable Directory in AFS**: First, you need to create a directory within your afs directory that will store your `.bashrc`. This directory must be set with permissions that allow `system:anyuser` to read and list contents. For example, if you're creating a directory named `public_configs` in your AFS space, you would use the following commands:
+
+```bash
+mkdir ~/public_configs
+fs setacl ~/public_configs system:anyuser rl
+```
+
+2. **Move `.bashrc` to the Public Directory**: Move your `.bashrc` file to this newly created directory. This ensures that the file is accessible from compute nodes within the Lanka Cluster.
+
+```bash
+mv ~/.bashrc ~/public_configs/
+```
+
+3. **Create a Soft Link in Your Home Directory**: To ensure seamless integration with your environment, create a symbolic link in your home directory that points to the `.bashrc` file in the `public_configs` directory.
+
+```bash
+ln -s ~/public_configs/.bashrc ~/.bashrc
+```
+
+### Ensuring SLURM Jobs Source Your `.bashrc`
+
+Your SLURM jobs should now automatically source this `.bashrc` anytime you are running bash, but if you would like to run it explicitly, you can do:
+
+```bash
+source ~/public_configs/.bashrc
+```
