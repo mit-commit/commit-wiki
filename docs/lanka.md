@@ -54,7 +54,7 @@ srun --cpu_bind=verbose,cores ./hellompi
 
 Currently, MVAPICH2 is installed as the MPI implementation on the cluster. MPI compilers are located in `/usr/local/bin` and you may need to ensure `/usr/local/lib` appears in your `LD_LIBRARY_PATH`.
 
-Building on csail login machines is discouraged. Instead, build on a lanka compute node. If you really need to cross compile on a different architecture, make sure to use the following compiler flags: `-O3 -march=corei7-avx -mtune=corei7-avx`.
+Building on csail login machines is discouraged. Instead, build on a lanka compute node. Note that the different kinds of lanka nodes are different architectures, so be careful about building on e.g. lanka-v2 and running on lanka-v3. [spack](https://spack.io/) may help for cross-compilation.
 
 ### Turbo Boost
 
