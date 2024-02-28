@@ -87,7 +87,7 @@ ln -s ~/public_configs/.bashrc ~/.bashrc
 
 ### Ensuring SLURM Jobs Source Your `.bashrc`
 
-Your SLURM jobs should now automatically source this `.bashrc` anytime you are running bash, but if you would like to run it explicitly, you can do:
+Now you may run your bashrc explicitly from a SLURM job:
 
 ```bash
 source ~/public_configs/.bashrc
