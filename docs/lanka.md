@@ -54,7 +54,7 @@ srun --cpu_bind=verbose,cores ./hellompi
 
 Currently, MVAPICH2 is installed as the MPI implementation on the cluster. MPI compilers are located in `/usr/local/bin` and you may need to ensure `/usr/local/lib` appears in your `LD_LIBRARY_PATH`.
 
-As the frontend node is not the same architecture as the compute nodes, make sure to use the following compiler flags: `-O3 -march=corei7-avx -mtune=corei7-avx`.
+Building on csail login machines is discouraged. Instead, build on a lanka compute node. If you really need to cross compile on a different architecture, make sure to use the following compiler flags: `-O3 -march=corei7-avx -mtune=corei7-avx`.
 
 ### Turbo Boost
 
