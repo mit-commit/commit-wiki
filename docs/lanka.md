@@ -92,3 +92,16 @@ Now you may run your bashrc explicitly from a SLURM job:
 ```bash
 source ~/public_configs/.bashrc
 ```
+
+
+# Other Machines
+## Non-Slurm Machine Etiquette
+
+**Since these machines are shared, you need to coordinate with other users to avoid screwing up other people's results! Please post in the lanka slack channel. Do not let others use these machiens without making them do this!**
+
+## The Lanka-dgx0 cluster.
+
+The dgx0 machine has eight Tesla V100-SXM2-32GB GPUs. You can access the dgx0 machine via `ssh lanka-dgx0` from within csail.  We don't use SLURM on this machine so please try to coordinate with others in the lanka slack channel and least check via  `who`. To configure which GPU you use, set `CUDA_VISIBLE_DEVICES` to the desired GPU(s) (0-7). For more details on the machine, specifically the cuda drivers, check `nvidia-smi`. This machine is currently running ubuntu 20 (compared to 22) on the other machines.
+
+## The bigram cluster.
+The bigram machine is a Intel(R) Xeon(R) Platinum 8180 CPU cluster (with 224 processors) and with roughly three terrabytes of RAM. You can access the bigram machine via `ssh bigram` from within csail (e.g. from the login node). We don't use SLURM on this machine so please try to coordinate with others in the lanka slack channel and check via `who`.  Use the `taskset` command to configure which CPUs a given task uses.
