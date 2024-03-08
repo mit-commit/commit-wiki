@@ -97,7 +97,7 @@ source ~/public_configs/.bashrc
 # Other Machines
 ## Non-Slurm Machine Etiquette
 
-**Since these machines are shared, you need to coordinate with other users to avoid screwing up other people's results! Please post in the lanka slack channel. Do not let others use these machines without making them do this!**
+**Since these machines are shared, you need to coordinate with other users to avoid affecting other people's results! Please post in the lanka slack channel. Do not let others use these machines without making them do this!**
 
 ## The Lanka-dgx0 cluster.
 
