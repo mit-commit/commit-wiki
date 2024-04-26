@@ -10,13 +10,11 @@ To add a paper:
 
 - Create a new branch for your changes.
 
-- Add the PDF file of your paper to `/data/papers/`. Make sure you add it in the right year (for example, papers of 2020 should be in the folder `/data/papers/2020/`). If the folder does not exist, feel free to create it.
+- Add the PDF file of your paper in `/papers/`.
 
-- Add a BibTeX entry for the paper in `papers.bib`. Make sure you add a link to your paper, for example using URL. For example:
+- Add data for the paper in `pp.json`. Make sure you add a link to your paper, for example using URL. Look at other entries in the JSON for examples. For example:
 
   `url="http://groups.csail.mit.edu/commit/papers/2018/tiramisu_paper.pdf"`
-
-- Run `add_paper.sh`.
 
 - Follow the instructions in the Readme to verify that the website looks good.
 
