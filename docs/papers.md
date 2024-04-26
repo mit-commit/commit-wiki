@@ -10,7 +10,7 @@ To add a paper:
 
 - Create a new branch for your changes.
 
-- Add the PDF file of your paper in `/papers/`.
+- Add the PDF file of your paper in `/papers/`. Make sure you add it in the right year (for example, papers of 2020 should be in the folder `/papers/2020/`). If the folder does not exist, feel free to create it.
 
 - Add data for the paper in `pp.json`. Make sure you add a link to your paper, for example using URL. Look at other entries in the JSON for examples. For example:
 
