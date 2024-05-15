@@ -16,14 +16,14 @@ To add a paper:
 
   `url="http://groups.csail.mit.edu/commit/papers/2018/tiramisu_paper.pdf"`
 
-- Run `add_paper.sh`.
-
-- Follow the instructions in the Readme to verify that the website looks good.
+- DO NOT run `add_papers.sh` like before, an admin will do it for you.
 
 - Commit your changes to git, push them to the repository, and create a pull request.
 
 - You are done. After merging your PR, an admin will update the server based on the `master` branch of the git repo.
 
 - Please keep in mind that the script used to extract information from the file `papers.bib` expects the BibTeX to be in a certain format. For example, the BibTeX entries have to be between `" "`. This is why it might be a good idea to copy another similar entry and modify it.
+  
+- If there any issues compiling your added bibtex entry, an admin will contact you before merging. Please look out for mails/comments on the PR to help them fix the bug in a timely manner. 
 
 - Consider sending an email to the commit mailing list to let everyone know about the new paper.
