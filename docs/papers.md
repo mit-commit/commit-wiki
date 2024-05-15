@@ -16,7 +16,7 @@ To add a paper:
 
   `url="http://groups.csail.mit.edu/commit/papers/2018/tiramisu_paper.pdf"`
 
-- DO NOT run `add_papers.sh` like before, an admin will do it for you.
+- **DO NOT run `add_papers.sh` like before, an admin will do it for you after merging your pull request**
 
 - Commit your changes to git, push them to the repository, and create a pull request.
 
