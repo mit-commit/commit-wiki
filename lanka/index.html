@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://mit-commit.github.io/commit-wiki/lanka/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Lanka - Commit Wiki</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Commit Wiki</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../papers/" class="nav-link">Papers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../admin/" class="nav-link">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Lanka</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../zotero/" class="nav-link">Zotero</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../admin/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../zotero/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/mit-commit/commit-wiki/blob/main/docs/lanka.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#using-the-lanka-cluster" class="nav-link">Using the Lanka Cluster</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#running-on-lanka-with-slurm" class="nav-link">Running on Lanka with SLURM</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#compiling-for-lanka" class="nav-link">Compiling for Lanka</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#file-permissions-and-bashrc" class="nav-link">File Permissions and .bashrc</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#other-machines" class="nav-link">Other Machines</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#non-slurm-machine-etiquette" class="nav-link">Non-Slurm Machine Etiquette</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-lanka-dgx0-cluster" class="nav-link">The Lanka-dgx0 cluster.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-bigram-cluster" class="nav-link">The bigram cluster.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="using-the-lanka-cluster">Using the Lanka Cluster</h1>
+<p>Lanka is a 24-node Intel Xeon E5-2695 v2 @ 2.40GHz Infiniband cluster with two sockets per node, each with 12 cores, for a total of 576 cores and a theoretical peak computational rate of 11059 GFlop/s. Each node has 128GB of memory, of which ~120GB is safely usable.</p>
+<p>To access the frontend node, <code>ssh &lt;csail_username&gt;@login.csail.mit.edu</code>, then <code>ssh slurm-login</code>. DO NOT ssh into any of the compute nodes.</p>
+<p><strong>Important</strong>: The cluster's compute nodes do not have access to afs. Therefore, you must create a directory in CSAIL's shared scratch file system corresponding to your username (i.e. <code>/data/scratch/&lt;username&gt;</code>) and do all cluster computing from that directory.</p>
+<p>Email commit-sysadmin@lists.csail.mit.edu for an account.</p>
+<h2 id="running-on-lanka-with-slurm">Running on Lanka with SLURM</h2>
+<p>We use the <a href="http://slurm.schedmd.com">SLURM</a> workload manager for the batch system. If you're familiar with another batch system, the <a href="http://slurm.schedmd.com/rosetta.pdf">rosetta stone</a> of workload managers may be helpful.</p>
+<h3 id="required-slurm-flags">Required SLURM Flags:</h3>
+<ul>
+<li>
+<p><code>--partition</code>: Partitions available now are <code>lanka-v2</code> and <code>lanka-v3</code></p>
+</li>
+<li>
+<p><code>--qos</code>: the only acceptable value for us is <code>commit-main</code>.</p>
+</li>
+<li>
+<p><code>--time</code>: in minutes. </p>
+</li>
+</ul>
+<p>An example command would look like this <code>srun -N 1 -n 1 --qos commit-main --time=60 --mem 102400 --partition lanka-v3 --exclusive ls</code></p>
+<h3 id="important-commands">Important commands</h3>
+<ul>
+<li><code>sbatch &lt;file&gt;</code>: submit <code>&lt;file&gt;</code> to the batch system (see below).</li>
+<li><code>scancel &lt;job_id&gt;</code>: stop a job/delete it from the queue</li>
+<li><code>squeue</code>: see queued jobs</li>
+<li><code>sinfo -N -l</code>: view cluster status</li>
+</ul>
+<h3 id="running-interactively">Running interactively</h3>
+<p>For debugging or testing, you can run interactively on the cluster. This is done with the <code>srun</code> command. For example, to run a interactively for 1 hour, you would run <code>srun --partition=lanka-v2 --qos=commit-main --time=01:00:00 --pty bash -i</code>.</p>
+<h3 id="running-batch-jobs">Running batch jobs</h3>
+<p>For most cases, the batch system is the way to go. Basically, write a simple batch script and submit it to the system via <code>sbatch &lt;foo.batch&gt;</code> and it will run when resources are available. For a full description of the <code>sbatch</code> syntax, see the man page or the <a href="http://slurm.schedmd.com">SLURM</a> website, but a quick example is below:</p>
+<pre><code class="language-bash">#!/bin/bash
+#SBATCH --partition lanka-v3
+#SBATCH --qos commit-main
+#SBATCH --tasks-per-node=24
+#SBATCH -N 2
+#SBATCH --cpu_bind=verbose,cores
+#SBATCH --exclusive
+#SBATCH -t 10
+cd $SLURM_SUBMIT_DIR
+srun --cpu_bind=verbose,cores ./hellompi
+</code></pre>
+<h2 id="compiling-for-lanka">Compiling for Lanka</h2>
+<p>Currently, MVAPICH2 is installed as the MPI implementation on the cluster. MPI compilers are located in <code>/usr/local/bin</code> and you may need to ensure <code>/usr/local/lib</code> appears in your <code>LD_LIBRARY_PATH</code>.</p>
+<p>Building on csail login machines is discouraged. Instead, build on a lanka compute node. Note that the different kinds of lanka nodes are different architectures, so be careful about building on e.g. lanka-v2 and running on lanka-v3. <a href="https://spack.io/">spack</a> may help for cross-compilation.</p>
+<h3 id="turbo-boost">Turbo Boost</h3>
+<p>Turbo Boost has been disabled on all nodes to reduce timing inconsistencies and performance variability. This setting should remain off by default. Check with <code>cat /sys/devices/system/cpu/intel_pstate/no_turbo</code> (should return 1). You can fail if turbo boost is enabled with <code>[ "$(cat /sys/devices/system/cpu/intel_pstate/no_turbo)" = "1" ] || (echo "TurboBoost is on and could disrupt benchmarks. Failing..." &amp;&amp; exit 1)</code>.</p>
+<h2 id="file-permissions-and-bashrc">File Permissions and .bashrc</h2>
+<p>Since the compute nodes do not have direct access to AFS, where your <code>.bashrc</code> file is typically located, a common issue arises in maintaining environment settings across jobs. A practical solution is to utilize a soft link to your <code>.bashrc</code> within a directory inside AFS, configured with specific permissions to allow system-wide readability without the need for Kerberos tokens.</p>
+<h3 id="steps-to-setup-the-soft-link-for-bashrc">Steps to Setup the Soft Link for <code>.bashrc</code></h3>
+<ol>
+<li><strong>Create a Publicly Readable Directory in AFS</strong>: First, you need to create a directory within your afs directory that will store your <code>.bashrc</code>. This directory must be set with permissions that allow <code>system:anyuser</code> to read and list contents. For example, if you're creating a directory named <code>public_configs</code> in your AFS space, you would use the following commands:</li>
+</ol>
+<pre><code class="language-bash">mkdir ~/public_configs
+fs setacl ~/public_configs system:anyuser rl
+</code></pre>
+<ol>
+<li><strong>Move <code>.bashrc</code> to the Public Directory</strong>: Move your <code>.bashrc</code> file to this newly created directory. This ensures that the file is accessible from compute nodes within the Lanka Cluster.</li>
+</ol>
+<pre><code class="language-bash">mv ~/.bashrc ~/public_configs/
+</code></pre>
+<ol>
+<li><strong>Create a Soft Link in Your Home Directory</strong>: To ensure seamless integration with your environment, create a symbolic link in your home directory that points to the <code>.bashrc</code> file in the <code>public_configs</code> directory.</li>
+</ol>
+<pre><code class="language-bash">ln -s ~/public_configs/.bashrc ~/.bashrc
+</code></pre>
+<h3 id="ensuring-slurm-jobs-source-your-bashrc">Ensuring SLURM Jobs Source Your <code>.bashrc</code></h3>
+<p>Now you may run your bashrc explicitly from a SLURM job:</p>
+<pre><code class="language-bash">source ~/public_configs/.bashrc
+</code></pre>
+<h1 id="other-machines">Other Machines</h1>
+<h2 id="non-slurm-machine-etiquette">Non-Slurm Machine Etiquette</h2>
+<p><strong>Since these machines are shared, you need to coordinate with other users to avoid affecting other people's results! Please post in the lanka slack channel. Do not let others use these machines without making them do this!</strong></p>
+<h2 id="the-lanka-dgx0-cluster">The Lanka-dgx0 cluster.</h2>
+<p>The dgx0 machine has eight Tesla V100-SXM2-32GB GPUs. You can access the dgx0 machine via <code>ssh lanka-dgx0</code> from within csail.  We don't use SLURM on this machine so please try to coordinate with others in the lanka slack channel and least check via  <code>who</code>. To configure which GPU you use, set <code>CUDA_VISIBLE_DEVICES</code> to the desired GPU(s) (0-7). For more details on the machine, specifically the cuda drivers, check <code>nvidia-smi</code>. This machine is currently running ubuntu 20 (compared to 22) on the other machines.</p>
+<h2 id="the-bigram-cluster">The bigram cluster.</h2>
+<p>The bigram machine is a Intel(R) Xeon(R) Platinum 8180 CPU cluster (with 224 processors) and with roughly three terrabytes of RAM. You can access the bigram machine via <code>ssh bigram</code> from within csail (e.g. from the login node). We don't use SLURM on this machine so please try to coordinate with others in the lanka slack channel and check via <code>who</code>.  Use the <code>taskset</code> command to configure which CPUs a given task uses.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
