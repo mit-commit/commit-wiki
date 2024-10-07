@@ -5,8 +5,9 @@ We use Git to manage updates to the whole commit website.
 **DO NOT EDIT FILES IN `/afs/csail.mit.edu/group/commit/www/data`** (we used to use a different system for this, but we are now using Git).
 
 To add a paper:
+- Fork the commit website at [`https://github.com/mit-commit/commit-website`](https://github.com/mit-commit/commit-website).
 
-- `git clone` the commit website at [`https://github.com/mit-commit/commit-website`](https://github.com/mit-commit/commit-website).
+- `git clone` your fork.
 
 - Create a new branch for your changes.
 
@@ -18,7 +19,7 @@ To add a paper:
 
 - **DO NOT run `add_papers.sh` like before, an admin will do it for you after merging your pull request**
 
-- Commit your changes to git, push them to the repository, and create a pull request.
+- Commit your changes to git, push them to your fork repository, and create a pull request on the main repository.
 
 - You are done. After merging your PR, an admin will update the server based on the `master` branch of the git repo.
 
