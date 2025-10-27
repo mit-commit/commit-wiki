@@ -18,9 +18,11 @@ We use the [SLURM](http://slurm.schedmd.com) workload manager for the batch syst
 
 - `--qos`: the only acceptable value for us is `commit-main`.
 
+- `--account`: the only acceptable value for us is `commit`.
+
 - `--time`: in minutes. 
 
-An example command would look like this `srun -N 1 -n 1 --qos commit-main --time=60 --mem 102400 --partition lanka-v3 --exclusive ls`
+An example command would look like this `srun -N 1 -n 1 --qos commit-main --account=commit --time=60 --mem 102400 --partition lanka-v3 --exclusive ls`
 
 ### Important commands
 
@@ -31,7 +33,7 @@ An example command would look like this `srun -N 1 -n 1 --qos commit-main --time
 
 ### Running interactively
 
-For debugging or testing, you can run interactively on the cluster. This is done with the `srun` command. For example, to run a interactively for 1 hour, you would run `srun --partition=lanka-v2 --qos=commit-main --time=01:00:00 --pty bash -i`.
+For debugging or testing, you can run interactively on the cluster. This is done with the `srun` command. For example, to run a interactively for 1 hour, you would run `srun --partition=lanka-v2 --qos=commit-main --acount=commit --time=01:00:00 --pty bash -i`.
 
 ### Running batch jobs
 
@@ -41,6 +43,7 @@ For most cases, the batch system is the way to go. Basically, write a simple bat
 #!/bin/bash
 #SBATCH --partition lanka-v3
 #SBATCH --qos commit-main
+#SBATCH --account commit
 #SBATCH --tasks-per-node=24
 #SBATCH -N 2
 #SBATCH --cpu_bind=verbose,cores
